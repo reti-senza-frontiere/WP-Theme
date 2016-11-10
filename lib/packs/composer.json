@@ -1,0 +1,12 @@
+{
+    "name": "root/packs",
+    "require": {
+        "itbz/fpdf": "^1.7"
+    },
+    "authors": [
+        {
+            "name": "Alessandro Gubitosi",
+            "email": "gubi.ale@iod.io"
+        }
+    ]
+}

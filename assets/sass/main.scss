@@ -1,0 +1,179 @@
+@import "colours";
+@import "elements";
+@import "header";
+@import "footer";
+@import "forms";
+@import "map";
+
+html {
+    color: $grey-darken-3;
+}
+body {
+    background: {
+        color: $transparent;
+        image: url("../images/nodes_top.png");
+        repeat: no-repeat;
+        position: left top;
+    }
+    font-family: "Roboto";
+    font-size: 16px;
+}
+h1 { font-family: "Bitter", serif; font-size: 3rem; position: relative; left: -30px; padding-left: 30px; }
+h2 { font-family: "Bitter", serif; font-size: 2.5rem;; position: relative; left: -30px; padding-left: 30px; }
+h3 { font-family: "Bitter", serif; font-size: 2rem;; position: relative; left: -30px; padding-left: 30px; }
+h4 { font-family: "Bitter", serif; font-size: 1.8rem;; position: relative; left: -30px; padding-left: 30px; }
+h5 { font-family: "Bitter", serif; font-size: 1.5rem;; position: relative; left: -30px; padding-left: 30px; }
+h6 { font-family: "Bitter", serif; font-size: 1.2rem;; position: relative; left: -30px; padding-left: 30px; }
+hr { height: 1px; border: 0px none; background-image: linear-gradient(to right, $transparent, rgba(0, 0, 0, 0.5), $transparent); }
+a {
+    &[target="_blank"]:after {
+        content: "\f08e";
+        color: $grey;
+        font-family: "FontAwesome";
+        font-size: 0.5rem;
+        margin-left: 2px;
+        vertical-align: super;
+    }
+}
+
+
+.breadcrumbs-link {
+    position: absolute;
+    left: 6px;
+    opacity: 0;
+    font-size: 18px;
+    color: $grey;
+
+    \-webkit-transition: opacity 0.2s ease-in-out 0.1s;
+    \-moz-transition: opacity 0.2s ease-in-out 0.1s;
+    \-ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    &:hover .breadcrumbs-link {
+        opacity: 1;
+    }
+    &.required {
+        span {
+            color: $dark-red;
+        }
+    }
+}
+
+#container-main {
+    background: {
+        color: $transparent;
+        image: url("../images/nodes_bottom.png");
+        repeat: no-repeat;
+        position: right bottom;
+    }
+    margin-top: 10rem;
+    margin-bottom: -20px;
+
+    .container {
+        background-color: $white-transparent-85;
+        box-shadow: 0 0 20px 20px $white-transparent-85;
+    }
+
+    #breadcrumbs{
+        border-bottom: $grey-lighten-2 1px solid;
+        font-size: 0.9rem;
+        list-style: none;
+        margin: 10px 0 30px 0;
+        overflow: hidden;
+        padding-bottom: 6px;
+        color: $grey-darken-1;
+
+        li {
+            display: inline-block;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        .separator{
+            color: $grey;
+            font-size: 18px;
+            font-weight: 100;
+        }
+    }
+
+    ul {
+        &.tabs {
+            li {
+                &.disabled {
+                    a {
+                        color: $blue-grey-lighten-4;
+                    }
+                }
+                a {
+                    color: $blue-grey;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    #container-main {
+        margin-top: 3rem;
+    }
+}
+
+#toc_container {
+    border-color: $grey-lighten-5;
+    padding: 15px;
+
+    .toc_title {
+        font-weight: 300 !important;
+        text-align: left !important;
+    }
+    .toc_toggle {
+        float: right;
+        font-size: 12px !important;
+    }
+    .toc_list {
+        li {
+            line-height: 2;
+
+            .toc_number {
+                color: $grey;
+            }
+            a {
+                color: $blue-grey;
+                font-weight: 500;
+            }
+        }
+    }
+}
+#bank-label {
+    background-color: $grey-lighten-4a;
+    border: 1px solid $grey-lighten-3;
+    border-radius: 4.5px;
+    margin-bottom: 20px;
+
+    #qr-area {
+        background-color: $white;
+        padding: 20px 0 0;
+        text-align: center;
+
+        img {
+            padding: 20px;
+        }
+    }
+    #data-area {
+        text-align: left;
+        border-top: 1px solid $grey-lighten-3;
+        padding: 15px;
+
+        .iban {
+            background-color: $grey-lighten-5;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.82em;
+            padding: 3px;
+        }
+    }
+}

@@ -1,0 +1,120 @@
+header {
+    padding-left: 300px;
+
+    @media only screen and (max-width : 992px) {
+        header {
+            padding-left: 0;
+        }
+    }
+
+    .side-nav {
+        background-color: $blue-grey-darken-4;
+
+        a {
+            color: $white;
+
+            &:hover {
+                background-color: $grey-darken-3;
+            }
+        }
+        .side-nav-header {
+            border-bottom: $blue-grey-darken-3 1px solid;
+            height: 48px;
+            line-height: 48px;
+            padding: 0;
+
+            span {
+                color: $blue-grey;
+            }
+            a {
+                &.button, &.button-collapse {
+                    padding: 8px 16px;
+                }
+            }
+            .input-field {
+                margin: 0;
+                width: 230px;
+
+                .prefix {
+                    top: 10px;
+                }
+                input {
+                    height: 2rem;
+                    border-color: transparent;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+nav {
+    &.transparent {
+        box-shadow: 0 0 0 transparent;
+
+        a {
+            color: $blue-grey-darken-2;
+
+            &:not(.brand-logo):hover {
+                background-color: $deep-orange;
+                color: $white;
+            }
+            &.button-collapse {
+                display: block;
+            }
+            &.brand-logo {
+                background-color: $white-transparent-80;
+                box-shadow: 0 0 25px 25px $white-transparent-80;
+            }
+        }
+    }
+
+    a {
+        &.button-collapse {
+            margin: 0;
+            padding: 0 18px;
+
+            &:hover {
+                background-color: $blue-grey-lighten-3;
+            }
+        }
+    }
+}
+
+#fixed_nav {
+    display: none;
+    nav {
+        background-color: transparent;
+        box-shadow: 0 0 0 transparent;
+        height: 60px;
+
+        a {
+            color: $blue-grey-darken-2;
+
+            &.brand-logo {
+                background-color: $white-transparent-80;
+                box-shadow: 0 0 45px 45px $white-transparent-80;
+            }
+            &.button-collapse {
+                display: block;
+                margin: 0;
+                padding: 0 18px;
+
+                &:hover {
+                    background-color: $deep-orange;
+                    color: $white;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 992px) {
+        nav {
+            background-color: $white-transparent-80;
+            box-shadow: 0 0 20px 20px $white-transparent-80;
+        }
+    }
+
+}
+.fixed-action-btn {
+    display: none;
+}

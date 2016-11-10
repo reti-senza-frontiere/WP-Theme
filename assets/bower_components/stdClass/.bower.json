@@ -1,0 +1,31 @@
+{
+  "name": "stdClass",
+  "main": "stdClass.js",
+  "version": "0.1.0",
+  "authors": [
+    "Christian Blaschke <mail@platdesign.de>"
+  ],
+  "description": "A base class for JavaScript",
+  "keywords": [
+    "js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/platdesign/stdClass",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "7d06918e7de360b93785f2cf674d9a1962325ffc"
+  },
+  "_source": "https://github.com/platdesign/stdClass.git",
+  "_target": "*",
+  "_originalSource": "stdClass"
+}

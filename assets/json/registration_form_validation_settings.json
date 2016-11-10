@@ -1,0 +1,164 @@
+{
+    "rules": {
+        "reg_company": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_vat_number": {
+            "required": true,
+            "partita_iva": true
+        },
+        "reg_name": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_last_name": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_birth_date": {
+            "required": true
+        },
+        "reg_birth_place": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_street": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_street_no": {
+            "required": true,
+            "minlength": 1
+        },
+        "reg_city": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_postal_code": {
+            "required": true,
+            "minlength": 5,
+            "maxlength": 5,
+            "number": true
+        },
+        "reg_province": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_region": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_fiscal_code": {
+            "required": true,
+            "codice_fiscale": true
+        },
+        "reg_identity_document": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_released_by": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_released_date": {
+            "required": true,
+            "minlength": 3
+        },
+        "reg_cellular_number": {
+            "required": true,
+            "phone_number": true
+        },
+        "reg_email_address": {
+            "required": true,
+            "email": true
+        },
+        "reg_privacy_agree": {
+            "required": true
+        },
+        "reg_privacy_allow": {
+            "required": true
+        }
+    },
+    "messages": {
+        "reg_company": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_vat_number": {
+            "required": "Il campo è richiesto",
+            "partita_iva": "Il campo deve contenere un numero di partita IVA valido"
+        },
+        "reg_name": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_last_name": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_birth_date": {
+            "required": "Il campo è richiesto"
+        },
+        "reg_birth_place": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_street": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_street_no": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 1 carattere"
+        },
+        "reg_city": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_postal_code": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere 5 caratteri",
+            "maxlength": "Il campo deve contenere 5 caratteri",
+            "number": "Il campo deve contenere solo numeri"
+        },
+        "reg_province": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_region": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_fiscal_code": {
+            "required": "Il campo è richiesto",
+            "codice_fiscale": "Il codice inserito non è valido"
+        },
+        "reg_identity_document": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_released_by": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_released_date": {
+            "required": "Il campo è richiesto",
+            "minlength": "Il campo deve contenere almeno 3 caratteri"
+        },
+        "reg_cellular_number": {
+            "required": "Il campo è richiesto",
+            "phone_number": "Il campo deve contenere un numero di telefono valido"
+        },
+        "reg_email_address": {
+            "required": "Il campo è richiesto",
+            "email": "Il codice inserito non un indirizzo e-mail valido"
+        },
+        "reg_privacy_agree": {
+            "required": "Il campo è richiesto"
+        },
+        "reg_privacy_allow": {
+            "required": "Il campo è richiesto"
+        }
+    }
+}
