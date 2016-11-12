@@ -3,10 +3,11 @@
 Template Name: Registrazione Soci Sostenitori
 */
 
-get_header();
-
 if(isset($_POST) && count($_POST) > 0) {
     global $wpdb;
+
+    $register_user = new RegisterUser();
+    $register_user::run($_POST, $wpdb);
 
     // print_r($_POST);
     $registration_form = $_POST["registration_form"];
@@ -22,77 +23,108 @@ if(isset($_POST) && count($_POST) > 0) {
             "rsf_surveys",
             array(
                 "reg_request_id"    => md5(microtime()),
-                "no_connectivity"   => (($survey["no_connectivity"] == "on") ? true : false),
-                "only_tethering"    => (($survey["only_tethering"] == "on") ? true : false),
-                "only_tethering"    => (($survey["only_tethering"] == "on") ? true : false),
-                "low_connectivity"  => (($survey["low_connectivity"] == "on") ? true : false),
-                "too_expensive"     => (($survey["too_expensive"] == "on") ? true : false),
-                "no_satisfied"      => (($survey["no_satisfied"] == "on") ? true : false),
+                "no_connectivity"   => (isset($survey["no_connectivity"]) && ($survey["no_connectivity"] == "on") ? true : false),
+                "only_tethering"    => (isset($survey["only_tethering"]) && ($survey["only_tethering"] == "on") ? true : false),
+                "only_tethering"    => (isset($survey["only_tethering"]) && ($survey["only_tethering"] == "on") ? true : false),
+                "low_connectivity"  => (isset($survey["low_connectivity"]) && ($survey["low_connectivity"] == "on") ? true : false),
+                "too_expensive"     => (isset($survey["too_expensive"]) && ($survey["too_expensive"] == "on") ? true : false),
+                "no_satisfied"      => (isset($survey["no_satisfied"]) && ($survey["no_satisfied"] == "on") ? true : false),
                 "other"             => $survey["other"]["reason"],
             )
         );
-        $last_id = $wpdb->insert_id;
+        $survey_id = $wpdb->insert_id;
     } else {
-        $last_id = null;
+        $survey_id = null;
     }
     $wpdb->insert(
         "rsf_memebers",
         array(
-            "name" => $personal_data["name"],
-            "last_name" => $personal_data["last_name"],
-            "birth_date" => date("Y-m-d", strtotime(str_replace("/", "-", $personal_data["birth_date"]))),
-            "birth_place" => $personal_data["birth_place"],
-            "company" => $personal_data["company"],
-            "vat_number" => $personal_data["vat_number"],
-
-            "residency_search_map" => $residency["search_map"],
-            "residency_map_data" => $residency["map_data"],
-            "residency_street" => $residency["street"],
-            "residency_street_no" => $residency["street_no"],
-            "residency_city" => $residency["city"],
+            // Personal data
+            "name"          => $personal_data["name"],
+            "last_name"     => $personal_data["last_name"],
+            "birth_date"    => date("Y-m-d", strtotime(str_replace("/", "-", $personal_data["birth_date"]))),
+            "birth_place"   => $personal_data["birth_place"],
+            "company"       => $personal_data["company"],
+            "vat_number"    => $personal_data["vat_number"],
+            // Residency
+            "residency_search_map"  => $residency["search_map"],
+            "residency_map_data"    => $residency["map_data"],
+            "residency_street"      => $residency["street"],
+            "residency_street_no"   => $residency["street_no"],
+            "residency_city"        => $residency["city"],
             "residency_postal_code" => $residency["postal_code"],
-            "residency_province" => $residency["province"],
-            "residency_region" => $residency["region"],
-            "residency_city" => $residency["city"],
-
-            "documents_fiscal_code" => $documents["fiscal_code"],
-            "documents_identity_document" => $documents["identity_document"],
-            "documents_released_by" => $documents["released_by"],
-            "documents_released_date" => date("Y-m-d", strtotime(str_replace("/", "-", $documents["released_date"]))),
-
+            "residency_province"    => $residency["province"],
+            "residency_region"      => $residency["region"],
+            "residency_city"        => $residency["city"],
+            // Documents
+            "documents_fiscal_code"         => $documents["fiscal_code"],
+            "documents_identity_document"   => $documents["identity_document"],
+            "documents_released_by"         => $documents["released_by"],
+            "documents_released_date"       => date("Y-m-d", strtotime(str_replace("/", "-", $documents["released_date"]))),
+            // Contacts
             "contacts_telephone_number" => $contacts["telephone_number"],
-            "contacts_cellular_number" => $contacts["cellular_number"],
-            "contacts_email_address" => $contacts["email_address"],
-
-            "survey" => $last_id,
-
+            "contacts_cellular_number"  => $contacts["cellular_number"],
+            "contacts_email_address"    => $contacts["email_address"],
+            // Survey ID
+            "survey" => $survey_id,
+            // Wants to donate
             "declared_donation" => $extra["declared_donation"],
+            // Wants to be part of the Net
             "extra_requires_to_be_part_of_the_net" => (($extra["net_membership_requested"] == "on") ? true : false),
-
+            // Privacy
             "privacy_agree" => (($extra["privacy"]["agree"] == "on") ? true : false),
-            "privacy_allow" => (($extra["privacy"]["allow"] == "on") ? true : false)
+            "privacy_allow" => (($extra["privacy"]["allow"] == "on") ? true : false),
+            // User data
+            "user_ip" => $_SERVER["REMOTE_ADDR"],
+            "user_agent" => $_SERVER["HTTP_USER_AGENT"]
         )
     );
+
+    require("../lib/packs/vendor/phpmailer/phpmailer/PHPMailerAutoload.php");:
     if($result !== false) {
         $_POST = null;
-        $data_saved = true;
-        if(wp_mail(
-            $personal_data["name"] . " " . $personal_data["last_name"] . " <" . $contacts["email_address"] . ">",
-            "Richiesta di registrazione a Reti Senza Frontiere",
-            "test"
-        )) {
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->Host = "smtp1.retisenzafrontiere.org";
+        $mail->SMTPAuth = true;
+        $mail->Username = "noreply@retisenzafrontiere.org";
+        $mail->Password = "secret";
+        $mail->SMTPSecure = "tls";
+        $mail->Port = 587;
+
+        $mail->setFrom("noreply@retisenzafrontiere.org", "Reti Senza Frontiere");
+        $mail->addAddress($contacts["email_address"], $personal_data["name"] . " " . $personal_data["last_name"]);
+        $mail->addReplyTo("info@retisenzafrontiere.org", "Reti Senza Frontiere");
+
+        $mail->addAttachment("/tmp/image.jpg", "new.jpg");    // Optional name
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->Subject = "Here is the subject";
+        $mail->Body    = "This is the HTML message body <b>in bold!</b>";
+        $mail->AltBody = "This is the body in plain text for non-HTML mail clients";
+        if(
+            wp_mail(
+                $personal_data["name"] . " " . $personal_data["last_name"] . " <" . $contacts["email_address"] . ">",
+                "Richiesta di registrazione a Reti Senza Frontiere",
+                "test"
+            )
+        ) {
             print "ok";
+            // wp_redirect( get_site_url() . "/associazione/moduli/modulo-di-registrazione-soci-sostenitori/registrazione-avvenuta-con-successo" );
         } else {
             print_r(array(
                 $personal_data["name"] . " " . $personal_data["last_name"] . " <" . $contacts["email_address"] . ">",
                 "Richiesta di registrazione a Reti Senza Frontiere",
                 "test"
             ));
+            // wp_redirect( get_site_url() . "/errore" );
         }
     } else {
-        $data_saved = false;
+        wp_redirect( get_site_url() . "/errore" );
     }
 }
+get_header();
+
 ?>
 
 <?php if(have_posts()) : ?>
@@ -106,27 +138,6 @@ if(isset($_POST) && count($_POST) > 0) {
                             the_title("<h1>", "</h1>");
                         }
                         breadcrumb();
-                        ?>
-                        <?php
-                        if($data_saved !== null) {
-                            if($data_saved) {
-                                wp_redirect( get_site_url() . "/associazione/moduli/modulo-di-registrazione-soci-sostenitori/registrazione-avvenuta-con-successo" );
-                                exit();
-                            } else {
-                                wp_redirect( get_site_url() . "/errore" );
-                                exit();
-                                $color = "red";
-                                $message = '<h3>Ooops...</h3>';
-                                $message .= '<p>Spiacenti ma si è verificato un errore, riprovare in un secondo momento</p>';
-                            }
-                            ?>
-                            <div class="card-panel <?php print $color; ?>">
-                                <span class="white-text">
-                                    <?php print $message; ?>
-                                </span>
-                            </div>
-                            <?php
-                        }
                         ?>
                         <div class="col l12 m12 s12">
                             <form method="post" action="" id="registration_form" style="display: none;">
