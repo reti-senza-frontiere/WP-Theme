@@ -54,6 +54,8 @@ function theme_head_scripts() {
 	wp_enqueue_script("jquery-validation", get_template_directory_uri_packs() . "/jquery-validation/dist/jquery.validate.min.js", array(), "1.15.1", false);
 	// jQuery Validation
 	wp_enqueue_script("jquery-validation-additional-methods", get_template_directory_uri_packs() . "/jquery-validation/dist/additional-methods.min.js", array(), "1.15.1", false);
+	// jQuery inputmask
+	wp_enqueue_script("inputmask", get_template_directory_uri_packs() . "/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js", array(), "3.3.3", false);
 	// // Owl carousel
 	// wp_enqueue_script("owl-carousel", get_template_directory_uri_packs() . "/owlcar/owl-carousel/owl.carousel.js", array(), "1.3.2", false);
 	// // Fancybox

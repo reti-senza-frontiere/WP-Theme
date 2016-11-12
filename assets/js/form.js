@@ -91,7 +91,7 @@ jQuery(document).ready(function() {
         },
         submitHandler: function(form) {
             // form.preventDefault();
-            console.log("form ok");
+            // console.log("form ok");
             var $this = jQuery(".tab-content:visible:last"),
                 $button = $this.find("button.btn"),
                 data_activate = $button.data("activate");
@@ -100,9 +100,30 @@ jQuery(document).ready(function() {
                 jQuery("ul.tabs").tabs("select_tab", data_activate);
                 return false;
             } else {
+                jQuery("#registration_button").hide();
                 jQuery("#registration_form").submit();
             }
             // jQuery("#personal_data").find("button").removeClass("disabled");
+        }
+    });
+    jQuery("#reg_fiscal_code").inputmask("Regex", {
+        mask: "XXXXXXXXXXXXXXXX",
+        definitions: {
+            "X": {
+                validator: "[a-zA-Z0-9]",
+                cardinality: 1,
+                casing: "upper"
+            }
+        }
+    });
+    jQuery("#reg_identity_document").inputmask("Regex", {
+        mask: "XXXXXXXXX",
+        definitions: {
+            "X": {
+                validator: "[a-zA-Z0-9]",
+                cardinality: 1,
+                casing: "upper"
+            }
         }
     });
     require_config("registration_form_validation_settings.json", function(config) {
