@@ -8,7 +8,7 @@ if(isset($_POST) && count($_POST) > 0) {
     global $wpdb;
 
     $register_user = new RegisterUser();
-    $register_user::run($_POST, $wpdb);
+    $register_user::run($_POST);
 
     // print_r($_POST);
     // $registration_form = $_POST["registration_form"];

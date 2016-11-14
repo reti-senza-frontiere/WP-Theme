@@ -1,0 +1,5 @@
+Si certifica che {il_la} {sig_ra} {name} {last_name}, in data {date} ha fatto richiesta di iscrizione all'Associazione Reti Senza Frontiere.
+
+{wtbpn}Il modulo è stato debitamente compilato online con l'assistenza di un sistema di controllo euristico ed è stato recapitato a tutti i membri del Consiglio Direttivo.
+
+L'interessat{o_a} ha richiesto di essere iscritt{o_a} all'Associazione in qualità di Socio Sostenitore e di aver già versato - o di voler versare a breve - la Quota di partecipazione per mezzo di bonifico bancario.

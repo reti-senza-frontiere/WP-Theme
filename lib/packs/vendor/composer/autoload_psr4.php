@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Genderize\\' => array($vendorDir . '/barttyrant/php_genderize/src'),
 );

@@ -4,9 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d113b30c51910b5dd31cf5896173bd8",
-    "content-hash": "adb767d4c1cd53771231f9bd1b6e9f39",
+    "hash": "bcd7d752af51f1a20553740cf631fe9f",
+    "content-hash": "eb37639dfba1fd8b62b2f6ecc6045eb5",
     "packages": [
+        {
+            "name": "barttyrant/php_genderize",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barttyrant/php_genderize.git",
+                "reference": "89a39e2988797a08f1b3b1e67fdcc9b60f49b737"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barttyrant/php_genderize/zipball/89a39e2988797a08f1b3b1e67fdcc9b60f49b737",
+                "reference": "89a39e2988797a08f1b3b1e67fdcc9b60f49b737",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Genderize\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Bartek Tyranowski",
+                    "email": "bartek.tyranowski@picodi.com"
+                }
+            ],
+            "description": "Genderize.io handler for PHP",
+            "time": "2016-08-23 09:31:44"
+        },
         {
             "name": "phpmailer/phpmailer",
             "version": "v5.2.16",
@@ -110,7 +143,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "barttyrant/php_genderize": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

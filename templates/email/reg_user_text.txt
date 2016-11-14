@@ -1,0 +1,35 @@
+Ciao {name},
+la tua richiesta di registrazione è stata inoltrata con successo.
+
+--------------------------------------------------------------------------------
+
+PARTECIPAZIONE ALLA RETE
+Ricordiamo che tutte le richieste di partecipazione alla Rete dell'Associazione seguono questo processo:
+* SOPRALLUOGO
+  Si verrà contattati da un membro del Consiglio Direttivo per fissare un appuntamento per un sopralluogo
+* GRADUATORIA
+  In seduta ordinaria, il Consiglio Direttivo e il Consiglio Tecnico assegneranno un punteggio ad ogni richiesta, basato sullo svantaggio geografico e sulla fattibilità tecnica.
+  Puoi seguire l'esito della graduatoria a questo indirizzo: http://retisenzafrontiere.org/associazione/graduatoria-adesione-rete/
+* APPUNTAMENTO
+  Verrai contattato nuovamente per fissare un secondo appuntamento, questa volta per la creazione del tuo nodo.
+  Ricordiamo che si procede con calma, secondo le disponibilità tecniche, di magazzino e dei tempi dei volontari.
+
+Ricordiamo inoltre che tutte le richieste verranno valutate solo una volta ricevuto il versamento della quota di Socio Sostenitore.
+
+--------------------------------------------------------------------------------
+Puoi trovare i dati per il versamento a seguire:
+> Associazione "Reti Senza Frontiere"
+> Banca Popolare Etica
+> Via Parigi, 17
+> 00185 Roma
+> Codice IBAN: IT 08 X 03599 01899 050188529945
+
+Nella causale è necessario indicare:
+> « Quota iscrizione Associazione Reti Senza Frontiere anno {year} »
+
+oppure
+
+> « Quota iscrizione Associazione Reti Senza Frontiere anno {year} con donazione »
+
+
+Grazie e a presto!

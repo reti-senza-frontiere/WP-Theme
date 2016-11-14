@@ -2,7 +2,8 @@
     "name": "root/packs",
     "require": {
         "phpmailer/phpmailer": "^5.2",
-        "setasign/fpdf": "^1.8"
+        "setasign/fpdf": "^1.8",
+	"barttyrant/php_genderize": "dev-master"
     },
     "authors": [
         {
