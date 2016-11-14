@@ -1,2 +1,3 @@
 configs/database.ini
 configs/mail.ini
+lib/packs/composer.lock
