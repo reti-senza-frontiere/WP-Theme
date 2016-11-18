@@ -8,9 +8,9 @@ get_header();
 
 <?php if(have_posts()) : ?>
     <?php while(have_posts()) : the_post(); ?>
-        <div class="container-fluid">
+        <div id="container-main" class="container-fluid">
             <div class="row">
-                <div id="container-main" class="container">
+                <div class="container">
                     <div class="row">
                         <div class="col l12 m12 s12">
                             <?php

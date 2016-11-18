@@ -3,7 +3,6 @@ require_once("wp-content/themes/RetiSenzaFrontiere/lib/packs/vendor/autoload.php
 define("EURO", chr(128));
 
 class RegisterUser {
-    static private $wpdb;
     static private $registration_form;
     static private $personal_data;
     static private $residency;
@@ -15,6 +14,10 @@ class RegisterUser {
     static private $mail_config;
     static private $mail;
 
+    /**
+     * Set all POST data to local variables
+     * @param  array                    $data                                   The full $_POST array
+     */
     public static function get_data($data) {
         // print_r($_POST);
         self::$registration_form = $data["registration_form"];
@@ -54,13 +57,17 @@ class RegisterUser {
         return $recognizer->set_country_id("it")->recognize()->is_male();
     }
 
+    /**
+     * Execute core functions
+     * @param  array                    $data                                   The full $_POST array
+     */
     public static function run($data) {
         self::get_data($data);
         self::save_posts();
     }
 
     /**
-     * The user IPv4 address
+     * Detect the user IPv4 address
      * @return string                                                           The user IPv4 address in 15 characters length string format
      */
     private static function user_ip_address() {
@@ -68,7 +75,7 @@ class RegisterUser {
     }
 
     /**
-     * The user agent
+     * Detect the user agent
      * @return string                                                           The user agent
      */
     private static function user_agent() {
@@ -185,7 +192,7 @@ class RegisterUser {
 
             // There was an error
             // redirect the user to the error page
-            wp_redirect( get_site_url() . "/errore");
+            wp_redirect(get_site_url() . "/errore");
         }
         // Send the email
         self::send_mail_to_user();
@@ -193,7 +200,9 @@ class RegisterUser {
         wp_redirect(get_site_url() . "/associazione/moduli/modulo-di-registrazione-soci-sostenitori/registrazione-avvenuta-con-successo");
     }
 
-    // Send the email to the user
+    /**
+     * Send the email to the user
+     */
     private static function send_mail_to_user() {
         self::$mail->addAddress(self::$contacts["email_address"], self::$personal_data["name"] . " " . self::$personal_data["last_name"]);
         self::$mail->addReplyTo("info@retisenzafrontiere.org", "Reti Senza Frontiere");
@@ -209,13 +218,16 @@ class RegisterUser {
         self::$mail->Body = $user_mail_text;
 
         if(!self::$mail->send()) {
-            print "Message could not be sent.";
-            echo 'Mailer Error: ' . self::$mail->ErrorInfo;
+            // print "Message could not be sent.";
+            // print 'Mailer Error: ' . self::$mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            // print 'Message has been sent';
         }
     }
 
+    /**
+     * Sen email to the Consiglio Direttivp
+     */
     private static function send_mail_to_admin() {
         self::$mail->ClearAddresses();
         self::$mail->addAddress("registrazioni@retisenzafrontiere.org", "Reti Senza Frontiere");
@@ -231,10 +243,10 @@ class RegisterUser {
 
         self::$mail->Body = $content;
         if(!self::$mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . self::$mail->ErrorInfo;
+            // print 'Message could not be sent.';
+            // print 'Mailer Error: ' . self::$mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            // print 'Message has been sent';
         }
     }
 
