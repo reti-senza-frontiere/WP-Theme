@@ -20,7 +20,16 @@ global $menu;
                 </a>
                 <?php
                 // Main menu
-                wp_nav_menu($menu["header"]["main"]);
+                wp_nav_menu(
+                    array(
+                        "theme_location"	=> "header-menu",
+                        "menu"				=> "Header Menu",
+                        "container"			=> false,
+                        "menu_class"		=> "right hide-on-med-and-down",
+                        "menu_id"			=> "nav-header",
+                        "walker"			=> new cleaner_walker_nav_menu()
+                    )
+                );
                 ?>
                 <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only right">
                     <i class="material-icons">menu</i>
@@ -53,7 +62,16 @@ global $menu;
                 </div>
                 <?php
                 // Vertical black menu
-                wp_nav_menu($menu["header"]["vertical_black"]);
+                wp_nav_menu(
+                    array(
+                        "theme_location"	=> "header-menu",
+                        "menu"				=> "Header Menu",
+                        "container"			=> false,
+                        "menu_class"		=> "",
+                        "menu_id"			=> "",
+                        "walker"			=> new cleaner_walker_nav_menu
+                    )
+                );
                 ?>
             </div>
         </header>
