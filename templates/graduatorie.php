@@ -49,7 +49,7 @@ get_header();
                                 Il punteggio totale stabilirà la priorità <i>indicativa</i> di creazione del nodo di collegamento alla Rete.
                             </p>
                             <p>I Consigli potranno comunque stabilire per ragioni di altra natura (strategia di espansione, densità di copertura, ecc...) di dare priorità differenti rispetto a tale punteggio.</p>
-                            <divc class="spacer-50"></div>
+                            <div class="spacer-50"></div>
                             <?php
                             if($has_requests) {
                                 ?>
@@ -94,6 +94,7 @@ get_header();
                                 <p class="flow-text valign-wrapper">
                                     <span class="fa fa-fw fa-2x fa-check green-text"></span>&nbsp;&nbsp;<?php print __("Attualmente non ci sono valutazioni o le valutazioni sono state tutte evase"); ?>
                                 </p>
+                                <divc class="spacer-100"></div>
                                 <?php
                             }
                             ?>
