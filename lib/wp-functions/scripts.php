@@ -1,5 +1,16 @@
 <?php
 function theme_head_scripts() {
+	// Get the current page name
+	$pagename = trim(get_query_var("pagename"));
+	$form_pages = array(
+		"modulo-di-registrazione-soci-sostenitori"
+	);
+ 	$map_pages = array(
+		"modulo-di-registrazione-soci-sostenitori"
+	);
+	$has_form = in_array($pagename, $form_pages);
+	$has_map = in_array($pagename, $map_pages);
+
 	/**
 	 * Css packs
 	 */
@@ -19,8 +30,10 @@ function theme_head_scripts() {
 	wp_enqueue_style("materialize", get_template_directory_uri_packs() . "/materialize/css/materialize.css", array(), null);
 	// // Fancybox
 	// wp_enqueue_style("fancybox", get_template_directory_uri_packs() . "/fancybox/source/jquery.fancybox.css", array(), null);
-	// Mapbox
-	wp_enqueue_style("mapbox", get_template_directory_uri_packs() . "/mapbox.js/mapbox.css", array(), null);
+	if($has_map === true) {
+		// Mapbox
+		wp_enqueue_style("mapbox", get_template_directory_uri_packs() . "/mapbox.js/mapbox.css", array(), null);
+	}
 
 	/**
 	 * Google fonts
@@ -50,12 +63,6 @@ function theme_head_scripts() {
 	// wp_enqueue_script("bootstrap", get_template_directory_uri_packs() . "/bootstrap/dist/js/bootstrap.min.js", array(), "3.3.4", false);
 	// Materialize
 	wp_enqueue_script("materialize", get_template_directory_uri_packs() . "/materialize/dist/js/materialize.js", array(), "3.3.4", false);
-	// jQuery Validation
-	wp_enqueue_script("jquery-validation", get_template_directory_uri_packs() . "/jquery-validation/dist/jquery.validate.min.js", array(), "1.15.1", false);
-	// jQuery Validation
-	wp_enqueue_script("jquery-validation-additional-methods", get_template_directory_uri_packs() . "/jquery-validation/dist/additional-methods.min.js", array(), "1.15.1", false);
-	// jQuery inputmask
-	wp_enqueue_script("inputmask", get_template_directory_uri_packs() . "/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js", array(), "3.3.3", false);
 	// // Owl carousel
 	// wp_enqueue_script("owl-carousel", get_template_directory_uri_packs() . "/owlcar/owl-carousel/owl.carousel.js", array(), "1.3.2", false);
 	// // Fancybox
@@ -64,9 +71,6 @@ function theme_head_scripts() {
 	// wp_enqueue_script("google-maps", "//maps.googleapis.com/maps/api/js?v=3.exp", array(), "1.1", false);
 	// // Google maps js
 	// wp_enqueue_script("google-maps", get_template_directory_uri_packs() . "/gmaps/gmaps.min.js", array(), "1.1", false);
-	// Mapbox
-	wp_enqueue_script("mapbox", get_template_directory_uri_packs() . "/mapbox.js/mapbox.js", array(), "2.2.1", false);
-
 	// // Google chart
 	// wp_enqueue_script("google-charts", "//www.google.com/jsapi", array(), "1.1", false);
 	// Google reCaptcha
@@ -75,9 +79,21 @@ function theme_head_scripts() {
 	 * Custom Javascript
 	 */
 	wp_enqueue_script("default", get_template_directory_uri_js() . "/scripts.js", array(), "1.0.0", true);
-	wp_enqueue_script("map", get_template_directory_uri_js() . "/map.js", array(), "1.0.0", true);
-	wp_enqueue_script("form", get_template_directory_uri_js() . "/form.js", array(), "1.0.0", true);
 	wp_localize_script("default", "root_path", paths_for_javascript());
+	if($has_form) {
+		// jQuery Validation
+		wp_enqueue_script("jquery-validation", get_template_directory_uri_packs() . "/jquery-validation/dist/jquery.validate.min.js", array(), "1.15.1", false);
+		// jQuery Validation
+		wp_enqueue_script("jquery-validation-additional-methods", get_template_directory_uri_packs() . "/jquery-validation/dist/additional-methods.min.js", array(), "1.15.1", false);
+		// jQuery inputmask
+		wp_enqueue_script("inputmask", get_template_directory_uri_packs() . "/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js", array(), "3.3.3", false);
+		// Mapbox
+		wp_enqueue_script("mapbox", get_template_directory_uri_packs() . "/mapbox.js/mapbox.js", array(), "2.2.1", false);
+		// Custom form script
+		wp_enqueue_script("form", get_template_directory_uri_js() . "/form.js", array(), "1.0.0", true);
+		// Custom map Javascript
+		wp_enqueue_script("map", get_template_directory_uri_js() . "/map.js", array(), "1.0.0", true);
+	}
 }
 add_action("wp_enqueue_scripts", "theme_head_scripts");
 
